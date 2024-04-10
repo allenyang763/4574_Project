@@ -6,4 +6,4 @@ SELECT
     ORDER_ID,
     IS_REFUNDED,
     _FIVETRAN_SYNCED AS _FIVETRAN_SYNCED_TS
-FROM {{ source('LOAD', 'HR_JOIN') }} 
+FROM {{ source('google_drive', 'HR_JOIN') }} 
