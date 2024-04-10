@@ -2,7 +2,7 @@ SELECT
     _FILE,
     _LINE,
     _MODIFIED AS _MODIFIED_TS,
-    CAST(SUBSTRING(HIRE_DATE FROM 5) AS DATE) AS hiredate_formatted,
+    CAST(REPLACE(HIRE_DATE, 'day ', '') AS DATE) AS hiredate_formatted,
     EMPLOYEE_ID,
     NAME,
     ADDRESS,
