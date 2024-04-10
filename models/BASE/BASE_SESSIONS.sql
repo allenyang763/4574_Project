@@ -8,4 +8,4 @@ select _FIVETRAN_ID,
     _FIVETRAN_SYNCED
 
 
-from {{source('SNOWFLAKE','SESSIONS')}}
+from {{source('snowflake','SESSIONS')}}
