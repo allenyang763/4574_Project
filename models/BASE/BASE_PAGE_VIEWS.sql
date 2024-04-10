@@ -4,4 +4,4 @@ VIEW_AT AS ITEM_VIEW_AT_TS,
 CAST(PAGE_NAME AS STRING) AS PAGE_NAME,
 _fivetran_deleted,
 _fivetran_synced AS _fivetran_synced_TS
-FROM {{SOURCE('SNOWFLAKE', 'PAGE_VIEWS')}}
+FROM {{SOURCE('snowflake', 'PAGE_VIEWS')}}

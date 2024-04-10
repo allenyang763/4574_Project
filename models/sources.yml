@@ -16,5 +16,5 @@ sources:
     tables:
       - name: EXPENSES
       - name: RETURNS
-      - name: HR_JOINS
+      - name: HR_JOIN
       - name: HR_QUITS

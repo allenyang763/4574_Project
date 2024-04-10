@@ -7,4 +7,4 @@ CAST(SESSION_ID AS STRING) AS SESSION_ID,
 ITEM_VIEW_AT AS ITEM_VIEW_AT_TS,
 _fivetran_deleted,
 _fivetran_synced AS _fivetran_synced_TS
-FROM {{SOURCE('SNOWFLAKE', 'ITEM_VIEWS')}}
+FROM {{SOURCE('snowflake', 'ITEM_VIEWS')}}

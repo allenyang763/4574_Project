@@ -9,4 +9,4 @@ select _FIVETRAN_ID,
 
 
 
-from {{source('SNOWFLAKE','SESSIONS')}}
+from {{source('snowflake','SESSIONS')}}
