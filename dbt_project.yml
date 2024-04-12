@@ -39,6 +39,7 @@ models:
   final_project_4574:
     # Applies to all files under models/example/
     base:
+      materialized: view
       +schema: BASE
     intermediate:
       materialized: view
