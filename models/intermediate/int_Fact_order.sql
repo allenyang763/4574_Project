@@ -11,7 +11,7 @@ SELECT
     bo.CLIENT_NAME as CLIENT_NAME, 
     bo.PAYMENT_METHOD as PAYMENT_METHOD, 
     bo.ORDER_AT_TS as ORDER_AT_TS,
-    br.IS_REFUNDED as IS_REFUNDED
+    COALESCE(br.IS_REFUNDED, 'not return') as IS_REFUNDED
 FROM {{ ref('BASE_ORDERS') }} as bo
 INNER JOIN DistinctBaseOrders as dbo 
     ON bo.ORDER_ID = dbo.ORDER_ID 
