@@ -68,4 +68,56 @@ models:
       - name: IS_REFUNDED
         description: The status of whether the order is refunded.
 
+  - name: Dim_employee
+    description: This table contains basic information about all employees
+
+    columns:
+      - name: EMPLOYEE_ID
+        description: This is a unique identifier for each employee
+        tests:
+         - unique
+         - not_null
+
+      - name: HIRE_DATE
+        description: This is the employee's date of hire
+
+      - name: NAME
+        description: This is the employee's name 
+
+      - name: ADDRESS
+        description: This is the employee's address
+
+      - name: CITY
+        description: This is the city where the employee lives
+
+      - name: TITLE
+        description: This is the job title of the employee
+
+      - name: ANNUAL_SALARY
+        description: This is the annual salary of the employee
+
+      - name: QUIT_DATE
+        description: This is the employee's date of quit
+
+      - name: EMPLOYMENT_STATUS
+        description: This is the status of the employment for each employee
+
+  - name: daily_finances
+    description: This table contains daily expenses and income information
+    
+    columns:
+      - name: DATE
+        description: This is the date which is the unique identifier
+        tests:
+         - unique
+         - not_null
+
+      - name: NET_REVENUE
+        description: This is the net revenue each day
+
+      - name: TOTAL_EXPENSES
+        description: This is the total expenses each day
+
+
+      
 
