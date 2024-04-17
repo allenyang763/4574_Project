@@ -23,7 +23,11 @@ SELECT
     jd.CITY,
     jd.TITLE,
     jd.ANNUAL_SALARY,
-    qd.quit_date
+    qd.quit_date,
+    CASE 
+        WHEN qd.quit_date IS NULL THEN 'on job'
+        ELSE 'quit job'
+    END AS EMPLOYMENT_STATUS
 FROM join_data jd
 LEFT JOIN quit_data qd
 ON jd.EMPLOYEE_ID = qd.EMPLOYEE_ID
