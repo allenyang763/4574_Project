@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: Dim_client
+    description: This table contains related infomation of clients, including their name, address, orders.
+
+    columns:
+      - name: SESSION_ID
+        description: This is a unique identifier for each session
+        tests:
+          - unique
+          - not_null
+
+      - name: SHIPPING_ADDRESS
+        description: Client shipping address
+        
+
+      - name: PAYMENT_INFO
+        description: This is a decrypted payment info for each order
+
+      - name: STATE
+        description: This is a state where client is from
+
+      - name: CLIENT_NAME
+        description: This is the client's name
+
+      
+      - name: PAYMENT_METHOD
+        description: This is how client is paying this order
+
+      - name: PHONE
+        description: This is the phone number of a client
+
+      - name: ORDER_AT_TS
+        description: This is the timestamp of when the order took place
+
+      - name: ORDER_ID
+        description: This is the unique identifier for each order
+        tests:
+          - unique
+          - not_null
+
+
+
