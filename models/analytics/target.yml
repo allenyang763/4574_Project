@@ -120,21 +120,21 @@ models:
         description: This is the status of the employment for each employee
 
   - name: daily_finances
-    description: This table contains daily expenses and income information
-    
+    description: This table contains daily expenses and revenue
+
     columns:
       - name: DATE
-        description: This is the date which is the unique identifier
+        description: This is the date which is also the unique identifier
         tests:
-         - unique
-         - not_null
+          - unique
+          - not_null
 
       - name: NET_REVENUE
         description: This is the net revenue each day
 
       - name: TOTAL_EXPENSES
-        description: This is the total expenses each day
-
+        description: This is the total expense each day
+              
   - name: Dim_item
     description: This table contains related information of items, including their name, quantity added and removed from cart, price, shipping cost, order time, and order ID.
 
