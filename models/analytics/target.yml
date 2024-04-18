@@ -56,38 +56,38 @@ models:
         description: This is the type of OS of what people were using for the session
 
   - name: Dim_employee
-    description: This table contains basic information about all employees
+    description: This table contains all basic information about employees
 
     columns:
-      - name: EMPLOYEE_ID
-        description: This is a unique identifier for each employee
-        tests:
-         - unique
-         - not_null
-
-      - name: HIRE_DATE
-        description: This is the employee's date of hire
-
-      - name: NAME
-        description: This is the employee's name 
-
       - name: ADDRESS
-        description: This is the employee's address
-
-      - name: CITY
-        description: This is the city where the employee lives
-
-      - name: TITLE
-        description: This is the job title of the employee
+        description: This is the address of the employee
 
       - name: ANNUAL_SALARY
-        description: This is the annual salary of the employee
+        description: This is annual salary of each employee
+
+      - name: CITY
+        description: This is the city of the employee
+
+      - name: EMPLOYEE_ID
+        description: This is unique identifier of each employee
+        tests:
+          - unique
+          - not_null
+      
+      - name: EMPLOYMENT_STATUS
+        description: This is the status of employment for each employee
+
+      - name: HIRE_DATE
+        description: This is the date of hire for each employee
+
+      - name: NAME
+        description: This is name of each employee
 
       - name: QUIT_DATE
-        description: This is the employee's date of quit
+        description: This is the date of quit for each employee, might be null
 
-      - name: EMPLOYMENT_STATUS
-        description: This is the status of the employment for each employee
+      - name: TITLE
+        description: This is the job title of each employee
 
   - name: daily_finances
     description: This table contains daily expenses and revenue
