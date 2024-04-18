@@ -40,6 +40,23 @@ models:
           - unique
           - not_null
 
+      - name: CLIENT_ID
+        description: This is the unique identifier for each client
+        tests:
+          - unique
+          - not_null
+
+      - name: IP
+        description: This is the IP of where the client conducted the session
+
+      - name: SESSION_AT_TS
+        description: This is the timestamp of when the session took place
+
+      - name: OS
+        description: This is the type of OS of what people were using for the session
+
+
+
   - name: Fact_order
     description: This table contains related information of orders, including their name, address, payment method, order time and return status.
 
