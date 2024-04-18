@@ -135,6 +135,67 @@ models:
       - name: TOTAL_EXPENSES
         description: This is the total expenses each day
 
+  - name: Dim_item
+    description: This table contains related information of items, including their name, quantity added and removed from cart, price, shipping cost, order time, and order ID.
 
-      
+    columns:
+      - name: SESSION_ID
+        description: The unique session id associated with each item
+        tests:
+         - unique
+         - not_null
 
+      - name: ITEM_NAME
+        description: The name of an item
+
+      - name: ADD_TO_CART_QUANTITY
+        description: The number of item being added to cart
+
+      - name: REMOVE_FROM_CART_QUANTITY
+        description: The number of item being removed from cart
+
+      - name: PRICE_PER_UNIT
+        description: The unit price for each item
+
+      - name: ITEM_VIEW_AT_TS
+        description: The time stamp of when the item is viewed
+
+      - name: SHIPPING_COST
+        description: The shipping cost of the item
+
+      - name: TAX_RATE
+        description: The tax rate of the item
+
+      - name: ORDER_AT_TS
+        description: The time stamp of when the item is ordered
+
+      - name: ORDER_ID
+        description: The unique order id for the item
+
+  - name: Fact_session
+    description: This table contains related information of sessions, including their ID, IP address, the timestamp, OS, page name, order, and item view information
+
+    columns:
+      - name: SESSION_ID
+        description: The unique session id associated with each item
+        tests:
+         - unique
+         - not_null
+
+      - name: IP
+        description: The IP address for the session
+
+      - name: SESSION_AT_TS
+        description: The timestamp for opening the session
+
+      - name: OS
+        description: The online system used for this session
+
+      - name: PAGE_NAME
+        description: The page name that is opened in the session
+
+      - name: ORDER
+        description: Whether the session makes an order
+
+      - name: ITEM_VIEWED
+        description: whether there is item viewed in the session
