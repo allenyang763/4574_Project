@@ -1,20 +1,39 @@
-WITH DistinctBaseOrders AS (
-    SELECT ORDER_ID, MIN(ORDER_AT_TS) as FirstOrderTimestamp
+-- models/joined_and_numbered.sql
+
+WITH OrderedBaseOrders AS (
+    SELECT 
+        ORDER_ID, 
+        SHIPPING_ADDRESS, 
+        STATE, 
+        CLIENT_NAME, 
+        PAYMENT_METHOD, 
+        ORDER_AT_TS,
+        ROW_NUMBER() OVER (PARTITION BY ORDER_ID ORDER BY ORDER_AT_TS) AS rn
     FROM {{ ref('BASE_ORDERS') }}
-    GROUP BY ORDER_ID
+),
+
+JoinedAndNumbered AS (
+    SELECT 
+        bo.ORDER_ID, 
+        bo.SHIPPING_ADDRESS, 
+        bo.STATE, 
+        bo.CLIENT_NAME, 
+        bo.PAYMENT_METHOD, 
+        bo.ORDER_AT_TS,
+        COALESCE(br.IS_REFUNDED, 'not return') as IS_REFUNDED,
+        ROW_NUMBER() OVER (PARTITION BY bo.ORDER_ID ORDER BY bo.ORDER_AT_TS) AS join_rn
+    FROM OrderedBaseOrders bo
+    LEFT JOIN {{ ref('BASE_RETURN') }} br ON bo.ORDER_ID = br.ORDER_ID
+    WHERE bo.rn = 1
 )
 
 SELECT 
-    bo.ORDER_ID as ORDER_ID, 
-    bo.SHIPPING_ADDRESS as SHIPPING_ADDRESS, 
-    bo.STATE as STATE, 
-    bo.CLIENT_NAME as CLIENT_NAME, 
-    bo.PAYMENT_METHOD as PAYMENT_METHOD, 
-    bo.ORDER_AT_TS as ORDER_AT_TS,
-    COALESCE(br.IS_REFUNDED, 'not return') as IS_REFUNDED
-FROM {{ ref('BASE_ORDERS') }} as bo
-INNER JOIN DistinctBaseOrders as dbo 
-    ON bo.ORDER_ID = dbo.ORDER_ID 
-    AND bo.ORDER_AT_TS = dbo.FirstOrderTimestamp
-LEFT JOIN {{ ref('BASE_RETURN') }} as br 
-    ON bo.ORDER_ID = br.ORDER_ID
+    ORDER_ID, 
+    SHIPPING_ADDRESS, 
+    STATE, 
+    CLIENT_NAME, 
+    PAYMENT_METHOD, 
+    ORDER_AT_TS,
+    IS_REFUNDED
+FROM JoinedAndNumbered
+WHERE join_rn = 1
