@@ -55,36 +55,6 @@ models:
       - name: OS
         description: This is the type of OS of what people were using for the session
 
-
-
-  - name: Fact_order
-    description: This table contains related information of orders, including their name, address, payment method, order time and return status.
-
-    columns:
-      - name: ORDER_ID
-        description: The unique id assigned to each order
-        tests:
-         - unique
-         - not_null
-
-      - name: SHIPPING_ADDRESS
-        description: The encrypted address of an order
-
-      - name: STATE
-        description: The state of the order  address. 
-
-      - name: CLIENT_NAME
-        description: The encrypted address of client name
-
-      - name: PAYMENT_METHOD
-        description: The paying method of the order
-
-      - name: ORDER_AT_TS
-        description: The time of the order being placed
-
-      - name: IS_REFUNDED
-        description: The status of whether the order is refunded.
-
   - name: Dim_employee
     description: This table contains basic information about all employees
 
@@ -199,3 +169,25 @@ models:
 
       - name: ITEM_VIEWED
         description: whether there is item viewed in the session
+
+  - name: Fact_order
+    description: This table contains related information of orders, including their name, address, payment method, order time and return status.
+    columns:
+      - name: ORDER_ID
+        description: The unique id assigned to each order
+        tests:
+        - unique
+        - not_null 
+      - name: SHIPPING_ADDRESS
+        description: The encrypted address of an order
+      - name: STATE
+        description: The state of the order address
+      - name: CLIENT_NAME
+        description: The encrypted address of client name
+      - name: PAYMENT_METHOD
+        description: The paying method of the order
+      - name: ORDER_AT_TS
+        description: The time of the order being placed
+      - name: IS_REFUNDED
+        description: The status of whether the order is refunded
+
