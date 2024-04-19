@@ -3,7 +3,7 @@ SELECT
     COALESCE(e.total_expenses, 0) AS total_expenses,
     COALESCE(r.net_revenue, 0) AS income,  
     COALESCE(rf.refund_amount, 0) AS refund_amount,  
-    COALESCE(r.net_revenue, 0) - COALESCE(rf.refund_amount, 0) AS net_revenue  
+    COALESCE(r.net_revenue, 0) - COALESCE(rf.refund_amount, 0)- COALESCE(e.total_expenses, 0) AS net_revenue  
 FROM
     (SELECT
         date,
