@@ -90,7 +90,7 @@ models:
         description: This is the job title of each employee
 
   - name: daily_finances
-    description: This table contains daily expenses and revenue
+    description: This table contains daily financial records
 
     columns:
       - name: DATE
@@ -104,6 +104,12 @@ models:
 
       - name: TOTAL_EXPENSES
         description: This is the total expense each day
+
+      - name: INCOME
+        description: This is income for each day
+
+      - name: REFUND_AMOUNT
+        description: This is refound amount each day 
               
   - name: Dim_item
     description: This table contains related information of items, including their name, quantity added and removed from cart, price, shipping cost, order time, and order ID.
