@@ -99,17 +99,21 @@ models:
           - unique
           - not_null
 
-      - name: NET_REVENUE
-        description: This is the net revenue each day
+      - name: TOTAL_INCOME
+        description: Total income of the day
+
+      - name: TOTAL_REFUNDED_AMOUNT
+        description: Total refund amount of the day
+
+      - name: TOTAL_NET_REVENUE
+        description: Total net revenue of the day
 
       - name: TOTAL_EXPENSES
-        description: This is the total expense each day
+        description: Total expenses of the day
+      
+      - name: NET_AFTER_EXPENSES
+        description: Total net income of the day
 
-      - name: INCOME
-        description: This is income for each day
-
-      - name: REFUND_AMOUNT
-        description: This is refound amount each day 
               
   - name: Dim_item
     description: This table contains related information of items, including their name, quantity added and removed from cart, price, shipping cost, order time, and order ID.
@@ -202,4 +206,10 @@ models:
         description: The time of the order being placed
       - name: IS_REFUNDED
         description: The status of whether the order is refunded
+      - name: INCOME
+        description: The income of this order
+      - name: REFUNDED_AMOUNT
+        description: The amount of refund of the order
+      - name: NET_REVENUE
+        description: The net revenue of the order
 
