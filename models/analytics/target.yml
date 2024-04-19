@@ -102,7 +102,7 @@ models:
       - name: TOTAL_INCOME
         description: Total income of the day
 
-      - name: TOTAL_REFUNDED_AMOUNT
+      - name: TOTAL_REFUND_AMOUNT
         description: Total refund amount of the day
 
       - name: TOTAL_NET_REVENUE
@@ -208,7 +208,7 @@ models:
         description: The status of whether the order is refunded
       - name: INCOME
         description: The income of this order
-      - name: REFUNDED_AMOUNT
+      - name: REFUND_AMOUNT
         description: The amount of refund of the order
       - name: NET_REVENUE
         description: The net revenue of the order
