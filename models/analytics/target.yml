@@ -176,6 +176,12 @@ models:
       - name: ITEM_VIEWED
         description: whether there is item viewed in the session
 
+      - name: TOTAL_NO_ITEM_VIEWED
+        description: The number of items that have been viewed within the session
+
+      - name: TOTAL_NO_PAGE_VIEWED
+        description: The number of pages that have been viewed within the session
+
   - name: Fact_order
     description: This table contains related information of orders, including their name, address, payment method, order time and return status.
     columns:
