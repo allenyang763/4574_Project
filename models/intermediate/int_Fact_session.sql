@@ -22,8 +22,12 @@ o AS (
 ),
 pv AS (
     SELECT session_id,
-       LISTAGG(page_name, ', ') WITHIN GROUP (ORDER BY page_name) AS pages,
-       COUNT(page_name) AS total_no_page_viewed
+       COUNT(page_name) AS total_no_page_viewed,
+       MAX(CASE WHEN page_name = 'shop_plants' THEN true ELSE false END) AS SHOP_PLANTS_IS_VIEWED,
+       MAX(CASE WHEN page_name = 'cart' THEN true ELSE false END) AS CART_IS_VIEWED,
+       MAX(CASE WHEN page_name = 'faq' THEN true ELSE false END) AS FAQ_IS_VIEWED,
+       MAX(CASE WHEN page_name = 'plant_care' THEN true ELSE false END) AS PLANT_CARE_IS_VIEWED,
+       MAX(CASE WHEN page_name = 'landing_page' THEN true ELSE false END) AS LANDING_PAGE_IS_VIEWED
     FROM {{ ref('BASE_PAGE_VIEWS') }}
     GROUP BY session_id
 ),
@@ -41,8 +45,12 @@ SELECT
     s.IP,
     s.session_at_ts,
     s.OS,
-    pv.pages,
     COALESCE(pv.total_no_page_viewed, 0) AS total_no_page_viewed,
+    pv.SHOP_PLANTS_IS_VIEWED,
+    pv.CART_IS_VIEWED,
+    pv.FAQ_IS_VIEWED,
+    pv.PLANT_CARE_IS_VIEWED,
+    pv.LANDING_PAGE_IS_VIEWED,
     COALESCE(iv.total_no_item_viewed, 0) AS total_no_item_viewed,
     CASE WHEN o.session_id IS NOT NULL THEN TRUE ELSE FALSE END AS "order",
     CASE WHEN iv.session_id IS NOT NULL THEN TRUE ELSE FALSE END AS "item_viewed"
