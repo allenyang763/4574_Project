@@ -46,14 +46,20 @@ SELECT
     s.session_at_ts,
     s.OS,
     COALESCE(pv.total_no_page_viewed, 0) AS total_no_page_viewed,
-    pv.SHOP_PLANTS_IS_VIEWED,
-    pv.CART_IS_VIEWED,
-    pv.FAQ_IS_VIEWED,
-    pv.PLANT_CARE_IS_VIEWED,
-    pv.LANDING_PAGE_IS_VIEWED,
+    COALESCE(pv.SHOP_PLANTS_IS_VIEWED, FALSE) AS SHOP_PLANTS_IS_VIEWED,
+    COALESCE(pv.CART_IS_VIEWED, FALSE) AS CART_IS_VIEWED,
+    COALESCE(pv.FAQ_IS_VIEWED, FALSE) AS FAQ_IS_VIEWED,
+    COALESCE(pv.PLANT_CARE_IS_VIEWED, FALSE) AS PLANT_CARE_IS_VIEWED,
+    COALESCE(pv.LANDING_PAGE_IS_VIEWED, FALSE) AS LANDING_PAGE_IS_VIEWED,
     COALESCE(iv.total_no_item_viewed, 0) AS total_no_item_viewed,
-    CASE WHEN o.session_id IS NOT NULL THEN TRUE ELSE FALSE END AS "order",
-    CASE WHEN iv.session_id IS NOT NULL THEN TRUE ELSE FALSE END AS "item_viewed"
+    CASE 
+        WHEN o.session_id IS NOT NULL THEN TRUE 
+        ELSE FALSE 
+    END AS "order",
+    CASE 
+        WHEN iv.session_id IS NOT NULL THEN TRUE 
+        ELSE FALSE 
+    END AS "item_viewed"
 FROM 
     s
 LEFT JOIN 
